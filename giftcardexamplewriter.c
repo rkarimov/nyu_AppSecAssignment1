@@ -16,11 +16,13 @@ struct this_gift_card examplegc;
 struct gift_card_data examplegcd;
 struct gift_card_record_data examplegcrd;
 struct gift_card_amount_change examplegcac;
-
+struct gift_card_program hang;
 
 // Break it up so that we don't have long functions!  Good programming style!
 //  (JAC: This is so wrong.  Global variable use / initialization is a 
 //  terrible thing to do.)
+
+//first crash, you se num_bytes from 116 to -1 
 void setupgc() {
 	examplegc.num_bytes = 116;
 	examplegc.gift_card_data = (void *) &examplegcd;
@@ -33,9 +35,11 @@ void setupgc() {
 	/* JAC: here too! */
 	examplegcd.gift_card_record_data[0] = (void *) &examplegcrd;
 	examplegcrd.record_size_in_bytes = 44;
-	examplegcrd.type_of_record = 1; // JAC: Should be enum!  amount_change
+	examplegcrd.type_of_record = 3; // JAC: Should be enum!  amount_change
 	examplegcrd.actual_record = (void *) &examplegcac;
-	examplegcac.amount_added = 2000;
+	//2nd crash case is an integer overflow 
+	//something like 123456789
+examplegcac.amount_added = 123;
 	examplegcac.actual_signature = "[ insert crypto signature here ]";
 }
 
@@ -47,7 +51,7 @@ void setupgc() {
 void writegc() {
 	FILE *fd1;
 	// JAC: Why don't any of these check for error return codes?!?
-	fd1 = fopen("examplefile.gft","w");
+	fd1 = fopen("hang.gft","w");
 	fwrite(&examplegc.num_bytes,4,1,fd1);
 	fwrite(examplegcd.merchant_id,32,1,fd1);
 	fwrite(examplegcd.customer_id,32,1,fd1);
@@ -61,9 +65,11 @@ void writegc() {
 
 /* JAC: No args and return -1 for no reason!?! */
 int main(void) {
-
+	//example_pointer.program[0] = 9;
+	//example_pointer.program[1] = -12;
+	//example_pointer.message = malloc(32);
+	//example_pointer.message = malloc(256);
 	setupgc();
 	writegc();
-	return -1;
+	return -1; //
 }
-
