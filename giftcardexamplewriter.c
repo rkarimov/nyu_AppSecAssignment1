@@ -37,8 +37,6 @@ void setupgc() {
 	examplegcrd.record_size_in_bytes = 44;
 	examplegcrd.type_of_record = 3; // HANG CASE: Step 2: change type of record to 3
 	examplegcrd.actual_record = (void*)&examplegcd;
-	//possible 2nd crash case is an integer overflow 
-	//something like 123456789 for amount_added?
 	examplegcac.amount_added = 2000;
 	examplegcac.actual_signature = "[ insert crypto signature here ]";
 	
@@ -57,7 +55,7 @@ void setupgc() {
 void writegc() {
 	FILE *fd1;
 	// JAC: Why don't any of these check for error return codes?!?
-	fd1 = fopen("hang_test.gft","w");
+	fd1 = fopen("hang.gft","w");
 	fwrite(&examplegc.num_bytes,4,1,fd1);
 	fwrite(examplegcd.merchant_id,32,1,fd1);
 	fwrite(examplegcd.customer_id,32,1,fd1);
