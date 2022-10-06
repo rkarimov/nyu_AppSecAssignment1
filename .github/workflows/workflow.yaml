@@ -7,9 +7,10 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+    
+    - name: "checkout source code"
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-
+  
     - name: "Hang File Crash"
       run: ./giftcardreaderfixed 1 ./part2/tests/hang.gft
       
