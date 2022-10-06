@@ -1,6 +1,6 @@
-<h1> Testing <h1>
-<p> 
+<h1> Testing </h1>
 
+<p> 
 In order to effectively generate a gcov coverage report, I did the following: 
 1. I Ran 
 gcc -fprofile-arcs -ftest-coverage ./giftcardreaderfixed.c -o ./giftcardreaderfixed
@@ -38,9 +38,10 @@ Creating 'giftcardreaderfixed.c.gcov'
 </p>
 
 
-<p>The AFL Fuzzer part was likely the most time consuming task out of this whole assignment. 
+<p>
+The AFL Fuzzer part was likely the most time consuming task out of this whole assignment. 
 
-In order to run this effectivelly, I created two directories (afl_input /. alf_output), the former contained the current crash cases and later would have the additional crashes genereated </p>
+In order to run this effectivelly, I created two directories (afl_input /. alf_output), the former contained the current crash cases and later would have the additional crashes genereated
 
 First, I ran the following command "AFL_HARDEN=1 afl-gcc giftcardreaderfixed.c -o giftcardReaderFIXED_AFL" and then ran "sudo AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1 afl-fuzz -i afl_input/ -o afl_output/  ./giftcardReaderFIXED_AFL  1 @@" 
 I had to add the "AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES" b/c my VM kept freezing up when generating the crash cases, so in order to speed things up and still achieve the objectives of the assignment, I added this flag. 
