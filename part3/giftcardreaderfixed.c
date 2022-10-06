@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <strings.h>
-#include <string.h> // adding to alleviate warning 
+#include <string.h> // LOGIC FIX: adding to alleviate warning during compiling of the program
 
 // interpreter for THX-1138 assembly
 void animate(char *msg, unsigned char *program) {
@@ -73,6 +73,7 @@ done:
 	struct gift_card_amount_change *gcac_ptr;
     struct gift_card_program *gcp_ptr;
 	gcd_ptr = thisone->gift_card_data;
+    (unsigned int)gcac_ptr->amount_added; //fuzz 2 fix
 
 	printf("   Merchant ID: %32.32s\n",gcd_ptr->merchant_id);
 	printf("   Customer ID: %32.32s\n",gcd_ptr->customer_id);
@@ -207,6 +208,7 @@ struct this_gift_card *gift_card_reader(FILE *input_fd) {
 		/* JAC: Something seems off here... */
 
         // LOGIC FIX: changing this to int as one shouldn't store a  number as a char
+        //fuzz 1
 		gcd_ptr->number_of_gift_card_records = *((int *)ptr);
 		ptr += 4;
 

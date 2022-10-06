@@ -1,14 +1,17 @@
 name: learn-github-actions
+
 on: [push]
+
 jobs:
-  check-bats-version:
+  build:
+
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
 
-      - name: "Hang File Crash"
-        run: ./giftcardreaderfixed 1 ./part2/tests/hang.gft
+    - name: "Hang File Crash"
+      run: ./giftcardreaderfixed 1 ./part2/tests/hang.gft
       
-      - name: "Crash 1 file"
-      - run: ./giftcardreaderfixed 1 ./part2/tests/crash1.gft
+    - name: "Crash 1 file"
+    - run: ./giftcardreaderfixed 1 ./part2/tests/crash1.gft

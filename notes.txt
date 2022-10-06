@@ -1,3 +1,0 @@
-crash 1: adjust the num_bytes to a negative value
-crash 2: pass no arugment or invalid arugment when runnning the reader 
-hang: cause a loop within the program by allocating additional bytes to message and then going to a position within animate function and then go back to another position which causes a loop
