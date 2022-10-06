@@ -3,19 +3,13 @@
 
 In order to effectively generate a gcov coverage report, I did the following: 
 1. I Ran 
-<code>
 gcc -fprofile-arcs -ftest-coverage ./giftcardreaderfixed.c -o ./giftcardreaderfixed
-</code> 
 this compiled the program and then created a .gcno file 
 2. After the executable files were generated, I ran the following: 
-<code>
 ./giftcardreaderfixed 1 ./crash1.gft && ./giftcardreaderfixed 1 ./hang.gft
-</code>
 which ran the fixed reader against the crash cases for coverage purposes 
 2. Finally, I ran the progam using gcov to see the coverage by running the following: 
-<code>
 gcov -b -c ./giftcardreaderfixed.c 1 ./crash1.gft && ./giftcardreaderfixed.c 1 ./hang.gft
-</code>
 
 When execution completed, I recived the following stats: 
 Lines executed:50.60% of 168
@@ -30,9 +24,8 @@ In order to improve coverage, I closely studied the giftcardreaderfixed.c.gcov f
 
 I next ran the following: 
 
-<code>
 gcov -b -c ./giftcardreaderfixed.c 1 ./fuzz/hang.gft && ./giftcardreaderfixed.c 2 ./fuzz/hang.gft && ./giftcardreaderfixed.c 1 ./fuzz/crash1.gft && ./giftcardreaderfixed.c 2 ./fuzz/crash1.gft && ./giftcardreaderfixed.c 1 ./fuzz/cov1.gft && ./giftcardreaderfixed.c 2 cov1.gft && ./giftcardreaderfixed.c 1 ./fuzz/cov2.gft && ./giftcardreaderfixed.c 2 cov2.gft
-</code>
+
 
 When execution completed, I recievd the follwing stats:
 File 'giftcardreaderfixed.c'
@@ -66,12 +59,8 @@ In order to ensure the two were fixed, I ran them seperately against gift card r
 
 
 Both of them generated output w/o any segmentation errors. 
-Finally, I generated 
 
-
-**add something about twicking VM
-
-
+One of the key issues which slowed down my workflow was VM resource constraints. I had to increase its CPU and Memory to the max in order to get the fuzzer to work properly. 
 
 
 </p>

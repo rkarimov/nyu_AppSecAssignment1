@@ -15,3 +15,11 @@ jobs:
       run: ./giftcardreaderfixed 1 ./part2/tests/hang.gft
     - name: "Crash 1 file"
       run: ./giftcardreaderfixed 1 ./part2/tests/crash1.gft
+    - name: "coverage increase 1"
+      run: ./giftcardreaderfixed 1 ./part3/fuzz/cov1.gft
+    - name: "coverge increase 2"
+      run: ./giftcardreaderfixed 1 ./part3/fuzz/cov2.gft
+    - name: "fuzzer 1 case"
+      run: ./giftcardreaderfixed 1 ./part3/fuzz/fuzzer1.gft
+    - name: "fuzzer 2 case"
+      run: ./giftcardreaderfixed 1 ./part3/fuzz/fuzzer2.gft
