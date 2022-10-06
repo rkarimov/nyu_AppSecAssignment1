@@ -12,6 +12,6 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: "Hang File Crash"
-      run: ./giftcardreaderfixed 1 ./part2/tests/hang.gf
+      run: ./giftcardreaderfixed 1 ./part2/tests/hang.gft
     - name: "Crash 1 file"
       run: ./giftcardreaderfixed 1 ./part2/tests/crash1.gft
