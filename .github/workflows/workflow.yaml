@@ -16,7 +16,7 @@ jobs:
     - name: "Crash 1 file"
       run: ./giftcardreaderfixed 1 ./part2/tests/crash1.gft
     - name: "Crash 2 empty argument"
-    - run: ./giftcardreaderfixed 
+      run: ./giftcardreaderfixed 1 
     - name: "coverage increase 1"
       run: ./giftcardreaderfixed 1 ./part3/fuzz/cov1.gft
     - name: "coverge increase 2"
